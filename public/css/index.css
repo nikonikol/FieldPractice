@@ -1,0 +1,303 @@
+body{
+    background: -webkit-radial-gradient(
+        circle,#119bd1,rgb(3, 7, 212)
+    )
+}
+/* .top .navbar {
+    /* background:-webkit-linear-gradient(
+        left,rgb(40, 62, 185),rgb(3, 5, 107),rgb(40, 62, 185),rgb(36, 8, 112),rgb(40, 62, 185)
+    ); 
+    color: rgb(41, 36, 36);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.top .navbar .collapse{
+    font-size: 20px;
+}
+.top .navbar .fa{
+    width: 40px;
+    height: 40px;
+} */
+
+/*-- header --*/
+.header {
+    
+}
+
+.navbar-default {
+    background: none;
+    border: none;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 30px 40px ;
+    font-size: 3.5em;
+    line-height: 20px;
+    color: #fff !important;
+	font-family: 'Alex Brush', cursive;
+}
+.navbar-nav {
+    margin: 0 0 0 10em;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #f89406;
+}
+.navbar-nav > li > a {
+    padding: 30px 20px 0;
+}
+ul.nav.navbar-nav li a.active {
+    color: #f89406;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #F89422;
+    background-color: transparent;
+}
+.dropdown-menu {
+    min-width: 130px;
+    padding:10px 0;
+    margin: 0;
+    background-color: #EC6E2D;
+}
+.dropdown-menu > li > a:before{
+	display:none;
+}
+.dropdown-menu > li > a {
+    display: block !important;
+    padding: 8px 21px;
+}
+/*-- nav-effect --*/
+nav.cl-effect-13 a {
+   
+    display: inline-block;
+    margin: 0;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    font-size: 1em;
+}
+nav.cl-effect-13 a.active{
+    margin-left: 200px;
+}
+/* Effect 13: three circles */
+.cl-effect-13 a {
+	-webkit-transition: color 0.3s;
+	-moz-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.cl-effect-13 a::before {
+	position: absolute;
+	top:90%;
+	left: 50%;
+	color: transparent;
+	content: '•';
+	text-shadow: 0 0 transparent;
+	font-size: 1.2em;
+	-webkit-transition: text-shadow 0.3s, color 0.3s;
+	-moz-transition: text-shadow 0.3s, color 0.3s;
+	transition: text-shadow 0.3s, color 0.3s;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	transform: translateX(-50%);
+	pointer-events: none;
+}
+
+.cl-effect-13 a:hover::before,
+.cl-effect-13 a:focus::before,.cl-effect-13 a.active::before,
+.cl-effect-13 a.active:focus::before {
+	color: #f89406;
+    text-shadow: 10px 0 #f89406, -10px 0 #f89406;
+}
+
+.cl-effect-13 a:hover,
+.cl-effect-13 a:focus {
+	color: #ba7700;
+}
+/*-- //nav-effect --*/
+.social-icons ul li{
+	display:inline-block;
+}
+.icon-link {
+    background-color: #fff;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    box-sizing: content-box;
+}
+.icon-link{
+    -webkit-transition: background-color 150ms ease-in-out;
+    transition: background-color 150ms ease-in-out;
+    background-color: #fff;
+}
+.icon-link.round {
+    border-radius: 50%;
+}
+.icon-link.facebook {
+    background: url(../images/img-sp.png) no-repeat -4px -1px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d2d0cf;
+}
+.icon-link.facebook:hover{
+	background:url(../images/img-sp.png) no-repeat -41px -2px #fff;
+	border: 2px solid #fff;
+}
+.social-icons{
+	float:right;
+	margin: 1.1em 0 0;
+}
+.icon-link.p {
+    background: url(../images/img-sp.png) no-repeat -4px -38px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d2d0cf;
+}
+.icon-link.p:hover {
+    background: url(../images/img-sp.png) no-repeat -40px -38px #fff;
+	border: 2px solid #fff;
+}
+.icon-link.twitter {
+    background:url(../images/img-sp.png) no-repeat 0px -74px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d2d0cf;
+}
+.icon-link.twitter:hover {
+    background:url(../images/img-sp.png) no-repeat -40px -74px #fff;
+	border: 2px solid #fff;
+}
+.icon-link.dribble {
+    background:url(../images/img-sp.png) no-repeat -1px -110px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d2d0cf;
+}
+.icon-link.dribble:hover {
+    background:url(../images/img-sp.png) no-repeat -38px -110px #fff;
+	border: 2px solid #fff;
+}
+/*-- //header --*/
+
+
+
+.main{
+    overflow: hidden;
+    /* background:-webkit-linear-gradient(
+         top,rgb(40, 62, 185),rgb(3, 5, 107),rgb(40, 62, 185),rgb(36, 8, 112),rgb(40, 62, 185)
+    ); */
+    /* background: -webkit-radial-gradient(
+        circle,rgb(40, 62, 185),rgb(3, 5, 107)
+    ) */
+}
+
+.main .left-main{
+    float: left;
+    position: relative;    
+    width: 27%;
+    height: 700px;  
+    margin: 2px;
+    display: block;
+}
+
+.main .left-main .top-context{
+    width: 100%;
+    height: 200px;
+
+    
+    border-radius: 2%;
+    margin: 2px;
+}
+.main .left-main .center-context{
+    width: 100%;
+    height: 250px;
+
+    border-radius: 2%;
+    margin-left: 2px;
+    margin-bottom: 2px
+}
+.main .left-main .bottom-context{
+    width: 100%;
+    height: 240px;
+
+    border-radius: 2%;
+    margin-left: 2px;
+    
+}
+
+
+
+.main .center-main{
+    position: relative;
+    float: left;
+    display: block;
+    width: 45%;
+    height: 700px;
+    margin: 2px;
+}
+
+.main .center-main .map{
+
+    width: 100%;
+    height: 400px;
+    border-radius: 2%;
+    margin: 2px;
+}
+
+.main .center-main .chart{
+
+    width: 100%;
+    height: 290px;
+    border-radius: 2%;
+    margin: 2px;
+}
+
+.main .right-main{
+    position: relative;
+    display: block;
+    float: left;
+    width: 27%;
+    height: 700px;
+    margin: 2px;
+}
+
+.main .right-main .top{
+
+    width: 100%;
+    height: 200px;
+    border-radius: 2%;
+    margin: 2px;
+}
+.main .right-main .center{
+
+    width: 100%;
+    height: 200px;
+    border-radius: 2%;
+    margin: 2px;
+}
+.main .right-main .bottom{
+
+    width: 100%;
+    height: 290px;
+    border-radius: 2%;
+    margin: 2px;
+    margin-bottom: 2px;
+}
+
+
+.top .navbar .collapse{
+    text-align: center;
+}
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../public/lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../public/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=ve0GVXRoiTXQax3zTOZdmi4NXXmdFbSv"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 上部导航栏 -->
+    <div class="header">
+      <nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+					<div class="logo">
+						<a class="navbar-brand" href="">Dream</a>
+					</div>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="cl-effect-13" id="cl-effect-13">
+						<ul class="nav navbar-nav">
+							<li><a href="index.html" class="active">首页</a></li>
+							<li><a href="events.html">美食与美景</a></li>
+							<li><a href="short-codes.html">外卖</a></li>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								  服务 <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+								  <li><a href="services.html">Door Delivery</a></li>
+								  <li><a href="services.html">Direct Delivery</a></li>
+								</ul>
+							</li>
+							<li><a href="mail.html">建议</a></li>
+						</ul>
+					</nav>
+					<div class="social-icons">
+						<ul>
+							<li><a class="icon-link round facebook" href="#"></a></li>
+							<li><a class="icon-link round p" href="#"></a></li>
+							<li><a class="icon-link round twitter" href="#"></a></li>
+							<li><a class="icon-link round dribble" href="#"></a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+        <!-- <nav class="navbar navbar-expand-lg  ">
+            <a class="navbar-brand" href="#"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+             <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul> -->
+              <!-- <form class="form-inline my-2 my-lg-0">
+                
+              </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"><i class="fa fa-modx" aria-hidden="true"></i>首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa fa-database" aria-hidden="true"></i>安全</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-paw" aria-hidden="true"></i></i>内容
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="#"><i class="fa fa-user-circle" aria-hidden="true"></i>不知道</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav> --> 
+    </div>
+    <!-- 主要内容部分 -->
+    <div class="main">
+      <!-- 左边内容 -->
+      <div class="left-main">
+        <!-- 上-- -->
+        <div class="top-context">
+
+        </div>
+        <!-- 中-- -->
+        <div class="center-context">
+
+        </div>
+        <!-- 下-- -->
+        <div class="bottom-context">
+
+        </div>
+      </div>
+      <!-- 中间部分 -->
+      <div class="center-main">
+        <!-- map-- -->
+        <div class="map" id="map">
+
+        </div>
+        <!-- chart-- -->
+        <div class="chart">
+
+        </div>
+
+      </div>
+      <!-- 右边内容 -->
+      <div class="right-main">
+        <!-- 上-- -->
+        <div class="top"> 
+
+        </div>
+        <!-- 中 -->
+        <div class="center">
+
+        </div>
+        <!-- 下-- -->
+        <div class="bottom">
+
+        </div>
+      </div>
+    </div>
+<script type="text/javascript"> 
+var map = new BMap.Map("map");
+// 创建地图实例  
+var point = new BMap.Point(116.404, 39.915);
+// 创建点坐标  
+map.centerAndZoom(point, 15);
+map.setMapStyleV2({     
+  styleId: 'dc9d7434ede8a75aed897106d2e1b572'
+});
+// 初始化地图，设置中心点坐标和地图级别  
+</script> 
+</body>
+</html>
