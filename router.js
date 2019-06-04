@@ -134,6 +134,9 @@ router.post('/location',function(req,res){
             return res.status(500).send('Server error')
         }
         if(data){
+            var stulocat=new Array
+            var stulast=new Array
+            var stulocat=new Array
 
         }
     })
