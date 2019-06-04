@@ -41,15 +41,20 @@
     try{
         sql=`SELECT
         studentinfo.UserId,
-        studentinfo.Password
+        studentinfo.Password,
+        studentinfo.NickName,
+        studentinfo.Icon,
+        studentinfo.Class,
+        studentinfo.Role,
     FROM
         studentinfo
     WHERE
         studentinfo.UserId="`+userid+`" AND
-        studentinfo.Password="`+password+`"`
+        studentinfo.Password="`+password+`"
+        `
         mysql(sql,function(err,data){
             if(err){
-                console.log('11')
+                
                 return res.status(500).json({
                     err_code: 500,
                     message: err.message
@@ -86,11 +91,10 @@
  })
 
  /* index路由*/
-
 router.get('/index',function(req,res){
     //渲染页面
     if (req.session.Userinformation === null || req.session.Userinformation === undefined) {
-        return res.redirect('/login')
+        return res.redirect('/')
     }
     res.render('index.html', {
         Userinformation: req.session.Userinformation
@@ -99,15 +103,43 @@ router.get('/index',function(req,res){
 
 
 
-/* 注册路由*/
- router.get('/register', function (req, res) {
-    res.render('register.html')
+// /* 注册路由*/
+//  router.get('/register', function (req, res) {
+//     res.render('register.html')
+// })
+
+// //注册请求
+// router.post('/register', async function (req, res) {
+//     var register=req.body
+    
+// })
+
+/*获取所有学生位置信息路由*/
+router.post('/location',function(req,res){
+    var sql=null
+    //获取位置信息
+    try{
+        sql=`
+        SELECT
+    location.Id,
+    location.UserId,
+    location.LastTime,
+    location.Location,
+    location.TaskId
+    FROM
+    location
+        `
+    mysql(sql,function(err,data){
+        if(err){
+            return res.status(500).send('Server error')
+        }
+        if(data){
+
+        }
+    })
+    }
 })
 
-//注册请求
-router.post('/register', async function (req, res) {
-    var register=req.body
-    
-})
+
 
 module.exports=router
