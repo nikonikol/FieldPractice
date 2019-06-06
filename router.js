@@ -97,8 +97,43 @@ router.get('/index',function(req,res){
     if (req.session.Userinformation === null || req.session.Userinformation === undefined) {
         return res.redirect('/')
     }
+
+    var userid= req.session.Userinformation[0].UserId
+    try{
+        sql=`SELECT
+        tasktable.FromTime,
+        tasktable.EndTime,
+        tasktable.TaskName,
+        tasktable.Class,
+        tasktable.Address,
+        tasktable.TaskContent
+        FROM
+        tasktable
+        WHERE
+        tasktable.Sponsor="`+userid+`"
+    `
+        mysql(sql,function(err,data){
+            if(err){
+                
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+            req.session.Taskinformation = data
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
+    }
+
     res.render('index.html', {
-        Userinformation: req.session.Userinformation
+        Userinformation: req.session.Userinformation,
+        Taskinformation:  req.session.Taskinformation
     })
 })
 
@@ -145,7 +180,7 @@ router.get('/index',function(req,res){
 // })
 
 /*获取老师所发布的任务*/
-router.get('/gettask',function(req,res){
+router.get('/Locationtask',function(req,res){
     var sql=null
     var userid= req.session.Userinformation[0].UserId
     try{
