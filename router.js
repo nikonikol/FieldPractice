@@ -45,7 +45,7 @@
         studentinfo.NickName,
         studentinfo.Icon,
         studentinfo.Class,
-        studentinfo.Role,
+        studentinfo.Role
     FROM
         studentinfo
     WHERE
@@ -53,6 +53,7 @@
         studentinfo.Password="`+password+`"
         `
         mysql(sql,function(err,data){
+         
             if(err){
                 
                 return res.status(500).json({
@@ -115,34 +116,45 @@ router.get('/index',function(req,res){
 // })
 
 /*获取所有学生位置信息路由*/
-router.post('/location',function(req,res){
-    var sql=null
-    //获取位置信息
-    try{
-        sql=`
-        SELECT
-    location.Id,
-    location.UserId,
-    location.LastTime,
-    location.Location,
-    location.TaskId
-    FROM
-    location
-        `
-    mysql(sql,function(err,data){
-        if(err){
-            return res.status(500).send('Server error')
-        }
-        if(data){
-            var stulocat=new Array
-            var stulast=new Array
-            var stulocat=new Array
+// router.post('/location',function(req,res){
+//     var sql=null
+//     //获取位置信息
+//     try{
+//         sql=`
+//         SELECT
+//     location.Id,
+//     location.UserId,
+//     location.LastTime,
+//     location.Location,
+//     location.TaskId
+//     FROM
+//     location
+//         `
+//     mysql(sql,function(err,data){
+//         if(err){
+//             return res.status(500).send('Server error')
+//         }
+//         if(data){
+//             var stulocat=new Array
+//             var stulast=new Array
+//             var stulocat=new Array
 
-        }
-    })
+//         }
+//     })
+//     }
+// })
+
+/*获取老师所发布的任务*/
+router.get('/gettask',function(req,res){
+    var sql=null
+    try{
+        sql=`S
+
+        `
+    }
+    catch{
+
     }
 })
-
-
 
 module.exports=router

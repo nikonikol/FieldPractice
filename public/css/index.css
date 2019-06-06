@@ -230,7 +230,7 @@ nav.cl-effect-13 a.active{
 }
 .main .left-main .bottom-context{
     width: 100%;
-    height: 240px;
+    height: 500px;
 
     border-radius: 2%;
     margin-left: 2px;
@@ -279,7 +279,16 @@ nav.cl-effect-13 a.active{
     height: 200px;
     border-radius: 2%;
     margin: 2px;
+    border: 1px solid #EC6E2D
 }
+.main .right-main .top .table{
+    overflow: auto;
+    table-layout: fixed
+}
+.table .td{
+
+}
+
 .main .right-main .center{
 
     width: 100%;
@@ -290,7 +299,7 @@ nav.cl-effect-13 a.active{
 .main .right-main .bottom{
 
     width: 100%;
-    height: 290px;
+    height: 500px;
     border-radius: 2%;
     margin: 2px;
     margin-bottom: 2px;
