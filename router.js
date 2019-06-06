@@ -147,13 +147,52 @@ router.get('/index',function(req,res){
 /*获取老师所发布的任务*/
 router.get('/gettask',function(req,res){
     var sql=null
+    var userid= req.session.Userinformation[0].UserId
     try{
-        sql=`S
-
-        `
+        sql=`SELECT
+        tasktable.TaskId,
+        tasktable.FromTime,
+        tasktable.EndTime,
+        tasktable.TaskName,
+        tasktable.Class,
+        tasktable.Address,
+        tasktable.TaskContent,
+        tasktable.Sponsor,
+        tasktable.TaskState
+    FROM
+        tasktable
+    WHERE
+        tasktable.Sponsor="`+userid+`"
+    `
+        mysql(sql,function(err,data){
+            if(err){
+                
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+            if(!data){
+                return res.status(200).json({
+                    //提供错误码
+                    err_code: 1,
+                    message: 'nickname or password is invalid.'
+                })
+            }
+            else{
+                res.status(200).json({
+                    err_code: 0,
+                    message: 'OK'
+                })
+            }
+        })
     }
-    catch{
-
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
     }
 })
 

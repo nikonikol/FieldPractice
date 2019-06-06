@@ -145,7 +145,7 @@ nav.cl-effect-13 a.active{
 .icon-link.round {
     border-radius: 50%;
 }
-.icon-link.facebook {
+/* .icon-link.facebook {
     background: url(../images/img-sp.png) no-repeat -4px -1px;
     width: 30px;
     height: 30px;
@@ -176,19 +176,19 @@ nav.cl-effect-13 a.active{
     border: 2px solid #d2d0cf;
 }
 .icon-link.twitter:hover {
-    background:url(../images/img-sp.png) no-repeat -40px -74px #fff;
+    background:url() no-repeat -40px -74px #fff;
 	border: 2px solid #fff;
 }
 .icon-link.dribble {
-    background:url(../images/img-sp.png) no-repeat -1px -110px;
+    background:url() no-repeat -1px -110px;
     width: 30px;
     height: 30px;
     border: 2px solid #d2d0cf;
 }
 .icon-link.dribble:hover {
-    background:url(../images/img-sp.png) no-repeat -38px -110px #fff;
+    background:url() no-repeat -38px -110px #fff;
 	border: 2px solid #fff;
-}
+} */
 /*-- //header --*/
 
 
@@ -216,7 +216,7 @@ nav.cl-effect-13 a.active{
     width: 100%;
     height: 200px;
 
-    
+    border: 1px solid #EC6E2D;
     border-radius: 2%;
     margin: 2px;
 }
@@ -234,7 +234,7 @@ nav.cl-effect-13 a.active{
 
     border-radius: 2%;
     margin-left: 2px;
-    
+    border: 1px solid #EC6E2D
 }
 
 
@@ -262,6 +262,7 @@ nav.cl-effect-13 a.active{
     height: 290px;
     border-radius: 2%;
     margin: 2px;
+    border: 1px solid #EC6E2D
 }
 
 .main .right-main{
@@ -274,20 +275,18 @@ nav.cl-effect-13 a.active{
 }
 
 .main .right-main .top{
-
+    overflow: auto;
     width: 100%;
     height: 200px;
     border-radius: 2%;
     margin: 2px;
     border: 1px solid #EC6E2D
 }
-.main .right-main .top .table{
-    overflow: auto;
-    table-layout: fixed
+/* 滚动条设置 */
+.main .right-main .top::-webkit-scrollbar {
+    width: 0px;
 }
-.table .td{
 
-}
 
 .main .right-main .center{
 
@@ -303,6 +302,7 @@ nav.cl-effect-13 a.active{
     border-radius: 2%;
     margin: 2px;
     margin-bottom: 2px;
+    border: 1px solid #EC6E2D
 }
 
 
