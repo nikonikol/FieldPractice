@@ -1,7 +1,8 @@
 body{
     background: -webkit-radial-gradient(
-        circle,#119bd1,rgb(3, 7, 212)
-    )
+        circle,#115a77,rgb(3, 4, 59)
+    );
+    color: rgb(31, 123, 160);
 }
 /* .top .navbar {
     /* background:-webkit-linear-gradient(
@@ -21,6 +22,11 @@ body{
 /*-- header --*/
 .header {
     
+}
+
+.formbg{
+    background-color: rgb(16, 11, 97);
+    color: rgb(133, 203, 224);
 }
 
 .navbar-default {
@@ -215,7 +221,7 @@ nav.cl-effect-13 a.active{
 .main .left-main .top-context{
     width: 100%;
     height: 200px;
-
+    overflow: auto;
     border: 1px solid #EC6E2D;
     border-radius: 2%;
     margin: 2px;
@@ -231,9 +237,9 @@ nav.cl-effect-13 a.active{
 .main .left-main .bottom-context{
     width: 100%;
     height: 500px;
-
     border-radius: 2%;
     margin-left: 2px;
+    overflow: auto;
     border: 1px solid #EC6E2D
 }
 
@@ -257,7 +263,6 @@ nav.cl-effect-13 a.active{
 }
 
 .main .center-main .chart{
-
     width: 100%;
     height: 290px;
     border-radius: 2%;
@@ -286,6 +291,18 @@ nav.cl-effect-13 a.active{
 .main .right-main .top::-webkit-scrollbar {
     width: 0px;
 }
+.main .right-main .bottom::-webkit-scrollbar {
+    width: 0px;
+}
+.main .left-main .top-context::-webkit-scrollbar {
+    width: 0px;
+}
+.main .left-main .bottom-context::-webkit-scrollbar {
+    width: 0px;
+}
+.main .left-main .center-context::-webkit-scrollbar {
+    width: 0px;
+}
 
 
 .main .right-main .center{
@@ -296,7 +313,7 @@ nav.cl-effect-13 a.active{
     margin: 2px;
 }
 .main .right-main .bottom{
-
+    overflow: auto;
     width: 100%;
     height: 500px;
     border-radius: 2%;
