@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel的导入导出</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<hr/>
+    导出Excel：<button id="exportexcel">提交</button>
+    <hr/>
+    导入xlsx格式：<button id="importexcelxlsx">提交</button>
+    <hr/>
+    导入csv格式：<button id="importexcecsv">提交</button>
+<script>
+    $(function () {
+        $("#exportexcel").on("click",function () {
+            var inputObj=document.createElement('input')
+         inputObj.setAttribute('id','_ef');
+         inputObj.setAttribute('type','file');
+         inputObj.setAttribute("style",'visibility:hidden');
+         document.body.appendChild(inputObj);
+         inputObj.click();
+         inputObj.value ;
+            //window.open("/")
+        });
+        $("#importexcelxlsx").on("click",function () {
+            $.ajax({
+                url : "/importexcelxlsx",
+                type : "POST",
+                data : {},
+                success : function(data){
+                    console.log(data);
+                }
+            });
+        });
+        $("#importexcecsv").on("click",function () {
+            $.ajax({
+                url : "/importexcelcsv",
+                type : "POST",
+                data : {},
+                success : function(data){
+                    console.log(data);
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>
