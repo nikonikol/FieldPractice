@@ -1,0 +1,37 @@
+.container{
+    margin: 0px;
+}
+.container .map{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1485px;
+    height: 750px;
+    border-radius: 0.5%;
+}
+.container .input-card {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: rgb(207, 87, 39);
+}
+.container .input-one {
+
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: rgb(207, 87, 39);
+}
+.container .input-two {
+    float: left;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: rgb(207, 87, 39);
+}
+.container .input-three {
+    float: left;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: rgb(207, 87, 39);
+}

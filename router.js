@@ -231,4 +231,123 @@ router.get('/Locationtask',function(req,res){
     }
 })
 
+router.get('/map',function(req,res){
+    res.render('map.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+/* 展示任务路由 */
+router.get('/task',function(req,res){
+    var sql=null
+    var userid= req.session.Userinformation[0].UserId
+    try{
+        sql=`SELECT
+        tasktable.TaskId,
+        tasktable.FromTime,
+        tasktable.EndTime,
+        tasktable.TaskName,
+        tasktable.Class,
+        tasktable.Address,
+        tasktable.TaskContent,
+        tasktable.Sponsor,
+        tasktable.TaskState
+    FROM
+        tasktable
+    WHERE
+        tasktable.Sponsor="`+userid+`"
+    `
+    mysql(sql,function(err,task){
+        if(err){
+            return res.status(500).send('Server error')
+        }
+        if (task) {
+            console.log(task)
+            res.render('task.html',{
+                Userinformation: req.session.Userinformation,
+                task:task
+            })
+        }
+    })
+    }
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
+    }
+    
+})
+
+// router.post('/task',function(req,res){
+//     var sql=null
+//     var userid= req.session.Userinformation[0].UserId
+//     try{
+//         sql=`SELECT
+//         tasktable.TaskId,
+//         tasktable.FromTime,
+//         tasktable.EndTime,
+//         tasktable.TaskName,
+//         tasktable.Class,
+//         tasktable.Address,
+//         tasktable.TaskContent,
+//         tasktable.Sponsor,
+//         tasktable.TaskState
+//     FROM
+//         tasktable
+//     WHERE
+//         tasktable.Sponsor="`+userid+`"
+//     `
+//     mysql(sql,function(err,task){
+//         if(err){
+//             return res.status(500).send('Server error')
+//         }
+//         if (task) {
+//             for (var i = 0; i < task.length; i++) {
+//                 fromtime[i] = task[i].FromTime
+//                 endtime[i] = task[i].EndTime
+//                 taskname[i] = task[i].TaskName
+//                 grade[i] = task[i].Class
+//                 taskstate[i] = task[i].TaskState
+//                 sponsor[i]=task[i].Sponsor
+//                 taskcontent[i]=task[i].TaskContent
+//                 taskid[i]=task[i].TaskId
+//             }
+//             return res.status(200).json({
+//                 taskname : taskname,
+//                 fromtime : fromtime,
+//                 endtime : endtime,
+//                 grade : grade,
+//                 taskstate : taskstate,
+//                 sponsor:sponsor,
+//                 taskcontent:taskcontent,
+//                 taskid:taskid
+//             })
+//         }
+//     })
+//     }
+//     catch(err){
+//         res.status(500).json({
+//             code:2,
+//             err: err.message,
+//             message: ''
+//         })
+//     }
+// })
+
+router.get('/newtask',function(req,res){
+    res.render('newtask.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+router.get('/test',function(req,res){
+    res.render('test.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+router.get('/newtest',function(req,res){
+    res.render('newtest.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
 module.exports=router

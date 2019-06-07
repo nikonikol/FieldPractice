@@ -1,0 +1,132 @@
+    <!-- 导航栏 -->
+    <div class="header">
+        <nav class="navbar navbar-default">
+          <!-- 导航栏左部 -->
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                         <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                      </button> -->
+            <div class="logo">
+              <a class="navbar-brand" href="">哇哈哈</a>
+            </div>
+          </div>
+    
+          <!-- 导航栏中部 -->
+          <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+            <nav class="cl-effect-13" id="cl-effect-13">
+              <ul class="nav navbar-nav">
+                <li><a href="/index" class="active">首页</a></li>
+                <li><a href="/map">地图</a></li>
+                <li><a href="/task">任务</a></li>
+                <li role="presentation" class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    服务 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/newtask">新建任务</a></li>
+                    <li><a href="/newtest">新建测试</a></li>
+                  </ul>
+                </li>
+                <li><a href="mail.html">信息</a></li>
+              </ul>
+            </nav>
+            <!-- 用户信息 -->
+            <div class="navbar-custom-menu">
+              <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{Userinformation[0].Icon}}" class="img-circle" alt="User Image" style="width:50px">
+                    <span class="hidden-xs">{{Userinformation[0].NickName}}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="user-header">
+                      <img src="{{Userinformation[0].Icon}}" class="img-circle " alt="User Image" style="width:50px">
+                      <p>
+                        {{Userinformation[0].NickName}}
+                      </p>
+                    </li>
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href="javascript:;" onclick="xinxi()" class="btn btn-default " role="button">个人设置</a>
+                      </div>
+                      <div class="pull-right">
+                        <a href="/" class="btn btn-default" role="button">安全退出</a>
+                      </div>
+                    </li>
+                    <!-- <li><a class="icon-link round facebook" href="#"></a></li>
+                                <li><a class="icon-link round p" href="#"></a></li>
+                                <li><a class="icon-link round twitter" href="#"></a></li>
+                                <li><a class="icon-link round dribble" href="#"></a></li> -->
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.navbar-collapse -->
+        </nav>
+        <!-- <nav class="navbar navbar-expand-lg  ">
+                <a class="navbar-brand" href="#"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul> -->
+        <!-- <form class="form-inline my-2 my-lg-0">
+                    
+                  </form>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#"><i class="fa fa-modx" aria-hidden="true"></i>首页 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fa fa-database" aria-hidden="true"></i>安全</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-paw" aria-hidden="true"></i></i>内容
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="#"><i class="fa fa-user-circle" aria-hidden="true"></i>不知道</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav> -->
+      </div>
