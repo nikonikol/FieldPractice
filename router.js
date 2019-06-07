@@ -179,7 +179,7 @@ router.get('/index',function(req,res){
 //     }
 // })
 
-/*获取老师所发布的任务*/
+/*获取地图*/
 router.get('/Locationtask',function(req,res){
     var sql=null
     var userid= req.session.Userinformation[0].UserId
