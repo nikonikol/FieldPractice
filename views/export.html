@@ -2,50 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Excel的导入导出</title>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<hr/>
-    导出Excel：<button id="exportexcel">提交</button>
-    <hr/>
-    导入xlsx格式：<button id="importexcelxlsx">提交</button>
-    <hr/>
-    导入csv格式：<button id="importexcecsv">提交</button>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <!-- <form id='tf' action="http://localhost:4000/SaveExcle" method="POST" enctype="text/plain">
+            导出Excel： <input type="file" name="file" id="file" onchange="">  
+            <input type="email" name="" id=""> 
+            <input type="button" value="提交" onclick="ajax_submit()">
+        </form> -->
+
+
+
+
+
+
+
+
+        
+        <form id= "uploadForm" action= "http://localhost:4000/SaveExcle" method= "post" enctype ="multipart/form-data">    
+            <h1 >测试通过Rest接口上传文件 </h1>    
+            <p >指定文件名： <input type ="text" name="filename" /></p>    
+            <p >上传文件： <input type ="file" name="file" id="fileId" /></p>    
+            <p >关键字1： <input type ="text" name="keyword" /></p>    
+            <p >关键字2： <input type ="text" name="keyword" /></p>    
+            <p >关键字3： <input type ="text" name="keyword" /></p>    
+            <input type ="submit" value="上传" />    
+       </form>    
+
 <script>
-    $(function () {
-        $("#exportexcel").on("click",function () {
-            var inputObj=document.createElement('input')
-         inputObj.setAttribute('id','_ef');
-         inputObj.setAttribute('type','file');
-         inputObj.setAttribute("style",'visibility:hidden');
-         document.body.appendChild(inputObj);
-         inputObj.click();
-         inputObj.value ;
-            //window.open("/")
-        });
-        $("#importexcelxlsx").on("click",function () {
-            $.ajax({
-                url : "/importexcelxlsx",
-                type : "POST",
-                data : {},
-                success : function(data){
-                    console.log(data);
-                }
-            });
-        });
-        $("#importexcecsv").on("click",function () {
-            $.ajax({
-                url : "/importexcelcsv",
-                type : "POST",
-                data : {},
-                success : function(data){
-                    console.log(data);
-                }
-            });
-        });
+
+// function ajax_submit(){
+// alert(5)
+//     $("#tf").ajaxSubmit();
+// }
+
+
+// $.ajax({
+//     url: 'http://localhost:4000/SaveExcle',
+//     type: 'POST',
+//     cache: false,
+//     dataType:JSON,
+//     data:{'data':new FormData($('#uploadForm')[0]),
+//         'dasd':'dsadas'
+// } ,
+//     processData: false,
+//     contentType: false
+// }).done(function(res) {
+// }).fail(function(res) {});
+
+
+function submit1(){
+    var objFile = document.getElementById("fileId").files
+    var params = new FormData();
+params.append('file',objFile[0]);
+    alert(params)
+    $.ajax({    
+     url : "http://localhost:4000/SaveExcle",    
+     type : "POST",  
+     data:params,
+     cache: false,
+     contentType: false,
+     processData: false,
+     success:function(data){
+        console.log(data)
+    }
     })
+}
+
+// var oFiles = document.getElementById("pop_file").files;
+
+// $.ajax({
+//     type:'post',
+//     url:'http://api.tianshuai.com.cn/admin/BannerApi/actionBannerSave',
+//     data:params,
+//     cache: false,
+//     contentType: false,
+//     processData: false,
+//     success:function(data){
+//         console.log(data)
+//     }
+// })
+
+
+
+     
+     
+//      $( '#postForm').serialize(),    
+//      success : function(data) {    
+//           $( '#serverResponse').html(data);    
+//      },    
+//      error : function(data) {    
+//           $( '#serverResponse').html(data.status + " : " + data.statusText + " : " + data.responseText);    
+//      }    
+// });   
+
+
+// function ajax_submit() {
+        // var file=$("#file").value();
+        // console.log(file)
+        //     $.ajax({
+        //         type: "post",  //数据提交方式（post/get）
+        //         url: "http://localhost:4000/SaveExcle",  //提交到的url
+        //         data: {"file":file},//提交的数据
+        //         dataType: "json",//返回的数据类型格式
+        //         success: function(msg){
+        //             if (msg.success){  //修改成功
+        //                 //修改成功处理代码...
+ 
+        //             }else {  //修改失败
+        //                 //修改失败处理代码...
+ 
+        //             }
+        //         }
+        //     });
+        // }
+
+
+
+
+
+        
 </script>
+
+
+<!-- <script>
+        $(document).on('change', '#file', function () { //PictureUrl为input file 的id
+
+
+
+
+
+                    console.log(this.files[0]);
+                    function getObjectURL(file) {
+                        var url = null;
+                        if (window.createObjcectURL != undefined) {
+                            url = window.createOjcectURL(file);
+                        } 
+                        else if (window.URL != undefined)
+                         {
+                            url = window.URL.createObjectURL(file);
+                        } else if (window.webkitURL != undefined)
+                         {
+                            url = window.webkitURL.createObjectURL(file);
+                        }
+                        return url;
+                    }
+                    var objURL = getObjectURL(this.files[0]); //这里的objURL就是input file的真实路径
+                    alert(objURL)
+                    alert(url)
+                   // $('#imgContainer)'.html("")
+
+                        //cutImg();//自定义的裁剪图片函数
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    })
+                function getpath(path) {
+
+                    var path = path
+                    console.log(path)
+                    //window.location='http://localhost:4000/SaveExcle' + '?path='+path
+
+                    alert(path.value)
+                    // $.ajax({
+                    //         url : "/Importexcel",
+                    //         type : "POST",
+                    //         dataType:'text',
+                    //         data : path,           
+                    //         success : function(data){
+                    //             console.log(data);
+                    //         }
+                    //     });
+
+                }
+
+
+
+
+                $(function () {
+                    $("#exportexcel").on("click", function () {
+                        var inputObj = document.createElement('input')
+                        inputObj.setAttribute('id', '_ef');
+                        inputObj.setAttribute('type', 'file');
+                        inputObj.setAttribute("style", 'visibility:hidden');
+                        document.body.appendChild(inputObj);
+                        inputObj.click();
+                        inputObj.value;
+                        //alert(inputObj.value)
+                        //window.open("/")
+                    });
+                    $("#importexcelxlsx").on("click", function () {
+                        $.ajax({
+                            url: "/importexcelxlsx",
+                            type: "POST",
+                            data: {},
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+                    });
+                    $("#importexcecsv").on("click", function () {
+                        $.ajax({
+                            url: "/importexcelcsv",
+                            type: "POST",
+                            data: {},
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+                    });
+                })
+    </script> -->
 </body>
 </html>
