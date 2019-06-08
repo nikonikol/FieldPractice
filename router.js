@@ -336,6 +336,41 @@ router.get('/task',function(req,res){
 // })
 
 router.get('/newtask',function(req,res){
+    var textid=TextkId
+    var sql=null
+    try{
+        sql=`SELECT
+        testtable.Testid,
+        testtable.TestName,
+        testtable.TaskId,
+        testtable.Content,
+        testtable.TotalGrade,
+        testtable.Deadtime
+        FROM
+        testtable
+        WHERE
+        testtable.TaskId="`+textid+`"
+        `
+        mysql(sql,function(err,text){
+            if(err){
+                return res.status(500).send('Server error')
+            }
+            if (text) {
+                console.log(text)
+                res.render('text.html',{
+                    Userinformation: req.session.Userinformation,
+                    text:text
+                })
+            }
+        })       
+    }
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
+    }
     res.render('newtask.html',{
         Userinformation: req.session.Userinformation
     })
