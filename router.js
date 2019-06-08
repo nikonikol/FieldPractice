@@ -228,7 +228,6 @@ router.get('/Locationtask', function (req, res) {
     }
 })
 
-<<<<<<< HEAD
 
 //导入数据学生数据到数据库Importexcel
 /*获取所有学生位置信息路由*/
@@ -334,7 +333,6 @@ router.post('/SaveExcle', function (req, res) {
     })
 })
 module.exports = router
-=======
 router.get('/map',function(req,res){
     res.render('map.html',{
         Userinformation: req.session.Userinformation
@@ -455,4 +453,3 @@ router.get('/newtest',function(req,res){
     })
 })
 module.exports=router
->>>>>>> d6c7d6a16d540442b8c54fa2b2ac75c5198fe1f1
