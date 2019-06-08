@@ -1,0 +1,29 @@
+.container{
+    margin: 0px;
+
+}
+.container .box{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1485px;
+    height: 750px;
+    border-radius: 0.5%;
+}
+.header{
+    width: 1485px;
+    position: relative;
+    color: rgb(250, 250, 250);
+}
+.header .input{
+    margin-top: 30px;
+}
+.container .header .float-right{
+    float: right;
+    position: relative;
+    display: block;
+}
+.container .header .float-left{
+    float: left;
+    position: relative;
+    display: block;
+}
