@@ -3,11 +3,7 @@ body{
     background: -webkit-radial-gradient(
         circle,#54FF9F,	#006400
     );
-<<<<<<< HEAD
-    color: rgb(30, 147, 194);
-=======
     color: #00ffff!important;
->>>>>>> 828b2da1162555088bd9a77f4cb27913a10dc87d
 }
 /* .top .navbar {
     /* background:-webkit-linear-gradient(
