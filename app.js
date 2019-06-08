@@ -1,5 +1,6 @@
 var express=require('express')
 var fs=require('fs')
+const multer = require('multer');
 var session=require('express-session')
 var router=require('./router')
 var bodyParser=require('body-parser')
@@ -10,6 +11,10 @@ app.engine('html',require('express-art-template'))
 //公开文件夹
 app.use('/node_modules/',express.static('./node_modules'))
 app.use('/public/',express.static('./public'))
+
+//配置文件读取
+let multerObj = multer({dest:'./upload'});
+app.use(multerObj.any());
 //配置body=parser
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
