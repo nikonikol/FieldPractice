@@ -2,7 +2,7 @@ body{
     background: -webkit-radial-gradient(
         circle,#115a77,rgb(3, 4, 59)
     );
-    color: rgb(31, 123, 160);
+    color: rgb(30, 147, 194);
 }
 /* .top .navbar {
     /* background:-webkit-linear-gradient(
@@ -58,7 +58,7 @@ body{
     padding: 30px 20px 0;
 }
 ul.nav.navbar-nav li a.active {
-    color: #f89406;
+    /* color: #f89406; */
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #F89422;
@@ -198,6 +198,9 @@ nav.cl-effect-13 a.active{
 /*-- //header --*/
 
 
+.header .user{
+    margin-left: 400px;
+}
 
 .main{
     overflow: hidden;

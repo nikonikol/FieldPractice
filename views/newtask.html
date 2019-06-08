@@ -1,36 +1,71 @@
 {{extend './layout.html'}}
 {{block 'link'}}
+<link rel="stylesheet" href="../public/css/newtask.css">
 {{/block}}
 {{block 'content'}}
 <div class="container">
 <div class="page-header">
-  <h1>Example page header <small>Subtext for header</small></h1>
+  <h1>新建任务 <small></small></h1>
 </div>
-<form>
+<form id='newtask_form' >
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="text" class="form-control formbg" id="exampleInputEmail1" placeholder="text">
+          <label class="change" for="taskname">名称</label>
+          <input type="text" name="taskname" class="form-control formbg" id="taskname" placeholder="任务名称">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="text" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+          <label class="change" >班级</label>
+          <select name='class' class="form-control">
+            {{each newtask}}
+              <option>{{$value}}</option>
+            {{/each}}
+            </select>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="date" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+          <label class="change" for="fromtime">开始时间</label>
+          <input type="date" name="fromtime" class="form-control formbg" id="fromtime" placeholder="开始时间">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="date" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+          <label class="change" for="endtime">结束时间</label>
+          <input type="date" name="endtime" class="form-control formbg" id="endtime" placeholder="结束时间">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <textarea class="form-control formbg" rows="3"></textarea>
+          <label class="change" for="endtime">地址</label>
+          <input type="text" name="address" class="form-control formbg" id="address" placeholder="地址">
         </div>
         <div class="form-group">
-          <button>fdsads </button>
+          <label class="change" for="">内容</label>
+          <textarea name='taskcontent' class="form-control formbg" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success btn-block" type="submit">提交 </button>
         </div>
 
       </form>
 </div>
+{{/block}}
+{{block 'js'}}
+<script >
+$('#newtask_form').on('submit', function (e) {
+      e.preventDefault()
+      var formData = $(this).serialize()
+      $.ajax({
+        url: '/newtask',
+        type: 'post',
+        data: formData,
+        dataType: 'json',       
+        success: function (data) {
+          if (data.err_code === 0) {
+            window.alert('添加成功')
+            // 服务端重定向针对异步请求无效
+            window.location.href = '/task'
+          } else if (data.err_code === 1) {
+            window.alert('添加失败！')
+          }  else if (data.err_code === 500) {
+            window.alert('服务器忙，请稍后重试！')
+          }
+        }
+      })
+    })
+</script>
+
 {{/block}}

@@ -5,7 +5,7 @@
 {{block 'content'}}
 <div class="container">
 <div class="header">
-    <h1 class="float-left">任务信息</h1>
+    <h1 class="float-left"><a href="/newtask"> 新建任务</a></h1>
     <div class="float-right">
             <input type="text" class="input float-right" placeholder="Search Mail">
     </div>
@@ -14,20 +14,26 @@
           <div class="" id='task'>
             <table class="table table-hover">
               <tbody>
-            
-              <tr v-for='(task,index) in items'>
+            {{each task}}
+              <tr >
                 <td class="mailbox-star">{{$value.TaskId}}</td>
                 <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                <td class="mailbox-name"><a href="">{{task.TaskName}}</a></td>
-                <td class="mailbox-subject"><b>{{task.FromTime}}</b> 
+                <td class="mailbox-name"><a href="/studenttask?Testid={{$value.class}}">{{$value.TaskName}}</a></td>
+                <td class="mailbox-subject"><b>{{$value.FromTime}}</b> 
                 </td>
-                <td class="mailbox-subject"><b>{{task.EndTime}}</b> 
+                <td class="mailbox-subject"><b>{{$value.EndTime}}</b> 
                 </td>
-                <td class="mailbox-attachment">{{task.Class}}</td>
-                <td class="mailbox-date">{{task.TaskState}}</td>
-                <td class="mailbox-date"><a href="/test?Testid={{$task.TaskId}}">删除</a></td>
+                <td class="mailbox-attachment">{{$value.Class}}</td>
+                <td class="mailbox-date">{{$value.TaskState}}</td>
+                <td class="mailbox-star ">
+                  <div class="float"> 
+                  <div class="float-left"><a href="/test?Testid={{$value.TaskId}}">测试</a></div>
+                  <div class="float-right"><a href="/deletetask?Taskid={{$value.TaskId}}">删除</a></div>
+                  
+                </div>
+                </td>
               </tr>
-             
+              {{/each}} 
               </tbody>
             </table>
             <!-- /.table -->

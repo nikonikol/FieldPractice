@@ -1,6 +1,6 @@
 .container{
     margin: 0px;
-
+    color: aliceblue
 }
 .container .box{
     margin-top: 10px;
@@ -26,4 +26,10 @@
     float: left;
     position: relative;
     display: block;
+}
+.float .float-left{
+    float: left;
+}
+.float .float-right{
+    float: right;
 }

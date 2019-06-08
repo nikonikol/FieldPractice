@@ -35,7 +35,6 @@
      //获取请求体
      var userid=req.body.UserId
      var password=req.body.Password
-     console.log(req.body)
      var sql=null
     //匹配登陆账号和密码
     try{
@@ -71,7 +70,6 @@
             }
             else{
                 req.session.Userinformation = data
-                console.log(req.session.Userinformation)
                 // 用户存在，登陆成功，通过 Session 记录登陆状态
                 res.status(200).json({
                     err_code: 0,
@@ -82,7 +80,6 @@
         })
     }
     catch(err){
-        console.log('err')
         res.status(500).json({
             code:2,
             err: err.message,
@@ -236,7 +233,10 @@ router.get('/map',function(req,res){
         Userinformation: req.session.Userinformation
     })
 })
-/* 展示任务路由 */
+
+
+/* 任务路由 */
+//展示任务
 router.get('/task',function(req,res){
     var sql=null
     var userid= req.session.Userinformation[0].UserId
@@ -261,7 +261,6 @@ router.get('/task',function(req,res){
             return res.status(500).send('Server error')
         }
         if (task) {
-            console.log(task)
             res.render('task.html',{
                 Userinformation: req.session.Userinformation,
                 task:task
@@ -335,8 +334,121 @@ router.get('/task',function(req,res){
 //     }
 // })
 
+//发布新任务
 router.get('/newtask',function(req,res){
-    var textid=TextkId
+    var sql=null
+    var userid= req.session.Userinformation[0].UserId
+    try{
+        sql=`SELECT
+        studentinfo.Class
+    FROM
+        studentinfo
+    WHERE
+        studentinfo.UserId="`+userid+`"
+    `
+    mysql(sql,function(err,newtask){
+        newtask=newtask[0].Class.split(',')
+        if(err){
+            return res.status(500).send('Server error')
+        }
+        if (newtask) {
+            res.render('newtask.html',{
+                Userinformation: req.session.Userinformation,
+                newtask:newtask
+            })
+        }
+    })
+    }
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
+    }
+})
+router.post('/newtask',function(req,res){
+    var sql=null
+    var sponsor=req.session.Userinformation[0].UserId
+    var taskstate=0
+    var taskname=req.body.taskname
+    var grade=req.body.class
+    var fromtime=req.body.fromtime
+    var endtime=req.body.endtime
+    var address=req.body.address
+    var taskcontent=req.body.taskcontent
+    
+    try{
+        sql=`INSERT INTO
+        tasktable 
+        (TaskState,Sponsor,TaskContent,Address,Class,TaskName,EndTime,FromTime,TaskId)
+        VALUES
+        ("`+taskstate+`","`+sponsor+`","`+taskcontent+`","`+address+`","`+grade+`","`+taskname+`","`+endtime+`","`+fromtime+`",0)
+        `
+        mysql(sql,function(err){
+            if(err){
+                return res.status(200).json({
+                    err_code: 1,
+                    message: ''
+                })
+            }
+            else{
+                res.status(200).json({
+                    err_code: 0,
+                    message: 'OK'
+                })
+            }
+        })
+        
+    }
+    catch(err){
+        res.status(500).json({
+            err_code: 500,
+            message: err.message
+        })
+    }
+})
+//修改任务
+router.get('/edittask',function(req,res){
+    res.render('edittask.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+//删除任务
+router.get('/deletetask',function(req,res){
+    var sql=null
+    var taskid=req.query.Taskid
+    try{
+        sql=`
+        DELETE
+        FROM
+        tasktable
+        WHERE
+        tasktable.TaskId="`+taskid+`"
+        `
+        mysql(sql,function(err){
+            if(err){
+                return res.status(500).send('Server error')
+            }
+            res.redirect('/task')
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            code:2,
+            err: err.message,
+            message: ''
+        })
+    }
+})
+
+
+/**
+ * 任务测试路由
+ *  *//
+ //测试主页面
+router.get('/test',function(req,res){
+    var testid=req.query.Testid
     var sql=null
     try{
         sql=`SELECT
@@ -349,17 +461,16 @@ router.get('/newtask',function(req,res){
         FROM
         testtable
         WHERE
-        testtable.TaskId="`+textid+`"
+        testtable.TaskId="`+testid+`"
         `
-        mysql(sql,function(err,text){
+        mysql(sql,function(err,test){
             if(err){
                 return res.status(500).send('Server error')
             }
-            if (text) {
-                console.log(text)
-                res.render('text.html',{
+            if (test) {
+                res.render('test.html',{
                     Userinformation: req.session.Userinformation,
-                    text:text
+                    test:test
                 })
             }
         })       
@@ -371,18 +482,32 @@ router.get('/newtask',function(req,res){
             message: ''
         })
     }
-    res.render('newtask.html',{
-        Userinformation: req.session.Userinformation
-    })
 })
-router.get('/test',function(req,res){
-    res.render('test.html',{
-        Userinformation: req.session.Userinformation
-    })
-})
+//发布新测试
 router.get('/newtest',function(req,res){
     res.render('newtest.html',{
         Userinformation: req.session.Userinformation
     })
 })
+router.post('/newtest',function(req,res){
+
+})
+
+//修改测试
+router.get('/edittest',function(req,res){
+    res.render('edittest.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+//删除测试
+router.get('/deletetest',function(req,res){
+    res.render('deletetest.html',{
+        Userinformation: req.session.Userinformation
+    })
+})
+
+/**
+ * 学生
+ */
+
 module.exports=router
