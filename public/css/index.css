@@ -1,8 +1,9 @@
+
 body{
     background: -webkit-radial-gradient(
-        circle,#115a77,rgb(3, 4, 59)
+        circle,#54FF9F,	#006400
     );
-    color: rgb(31, 123, 160);
+    color: #00ffff!important;
 }
 /* .top .navbar {
     /* background:-webkit-linear-gradient(
@@ -25,7 +26,7 @@ body{
 }
 
 .formbg{
-    background-color: rgb(16, 11, 97);
+    background-color: rgb(255, 255, 255);
     color: rgb(133, 203, 224);
 }
 
@@ -222,7 +223,7 @@ nav.cl-effect-13 a.active{
     width: 100%;
     height: 200px;
     overflow: auto;
-    border: 1px solid #EC6E2D;
+    border: 1px solid #00FFFF;
     border-radius: 2%;
     margin: 2px;
 }
@@ -240,7 +241,7 @@ nav.cl-effect-13 a.active{
     border-radius: 2%;
     margin-left: 2px;
     overflow: auto;
-    border: 1px solid #EC6E2D
+    border: 1px solid #00FFFF
 }
 
 
@@ -267,7 +268,7 @@ nav.cl-effect-13 a.active{
     height: 290px;
     border-radius: 2%;
     margin: 2px;
-    border: 1px solid #EC6E2D
+    border: 1px solid #00FFFF
 }
 
 .main .right-main{
@@ -285,7 +286,7 @@ nav.cl-effect-13 a.active{
     height: 200px;
     border-radius: 2%;
     margin: 2px;
-    border: 1px solid #EC6E2D
+    border: 1px solid #00FFFF
 }
 /* 滚动条设置 */
 .main .right-main .top::-webkit-scrollbar {
@@ -319,7 +320,7 @@ nav.cl-effect-13 a.active{
     border-radius: 2%;
     margin: 2px;
     margin-bottom: 2px;
-    border: 1px solid #EC6E2D
+    border: 1px solid #00FFFF
 }
 
 
