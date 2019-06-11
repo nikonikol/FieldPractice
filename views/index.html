@@ -20,17 +20,21 @@
         <table class="table table-hover " action="/">
           <thead>
             <tr>
-              <th>学生信息</th>
-              <th><a>查看</a></th>
+              <th>姓名</th>
+              <th>班级</th>
+              <th>昵称</th>
+              <th>学号</th>
             </tr>
           </thead>
           <tbody>
+            {{each Studentinformation}}
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{$value.Name}}</td>
+              <td>{{$value.Class}}</td>
+              <td>{{$value.NickName}}</td>
+              <td>{{$value.UserId}}</td>
             </tr>
+            {{/each}}
           </tbody>
         </table>
 
@@ -42,34 +46,38 @@
       <div class="map" id="map">
           
       </div>
+
       <!-- chart-- -->
       <div class="chart">
 
+        <div id="container" style="height: 100%"></div>
       </div>
 
     </div>
     <!-- 右边内容 -->
     <div class="right-main">
       <!-- 上-- -->
-      <div class="top">
-        <table class="table table-hover " action="/">
+      <div class="top" id="app">
+        <table class="table  " action="/">
           <thead>
             <tr>
               <th>实习名称</th>
               <th>班级</th>
-              <th>开始时间</th>
-              <th>结束时间</th>
-              <th>选择</th>
+    
+              <th>任务状态</th>
+              <th>详情</th>
             </tr>
           </thead>
           <tbody>
-            
+            {{each Taskinformation}}
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{$value.TaskName}}</td>
+              <td>{{$value.Class}}</td>
+             
+              <td>{{$value.TaskState?'正在进行':'已完成'}}</td>
+              <td><button class="btn btn-info" onclick="loaddata('{{$value}}')">详情</button></td>
             </tr>
+            {{/each}}
           </tbody>
         </table>
 
@@ -90,29 +98,238 @@
         </table>
         <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="text" class="form-control formbg" id="exampleInputEmail1" placeholder="text">
+            <label for="exampleInputEmail1">任务名称</label>
+            <input type="text" class="form-control formbg" id="taskname" placeholder="text">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="text" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+            <label for="exampleInputPassword1">开始时间</label>
+            <input type="text" class="form-control formbg" id="FromTime" placeholder="text">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="text" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+            <label for="exampleInputPassword1">截至时间</label>
+            <input type="text" class="form-control formbg" id="EndTime" placeholder="text">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="text" class="form-control formbg" id="exampleInputPassword1" placeholder="text">
+            <label for="exampleInputPassword1">参加班级</label>
+            <input type="text" class="form-control formbg" id="Class" placeholder="text">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <textarea class="form-control formbg" rows="3"></textarea>
+            <label for="exampleInputPassword1">任务地点</label>
+            <input type="text" class="form-control formbg" id="Address" placeholder="text">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">任务内容</label>
+            <textarea class="form-control formbg" rows="1" id="TaskContent"></textarea>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+
+  <script>
+      
+    // var topandright =new Vue({
+    //       el:'#app',
+    //       data:{
+
+    //       },
+
+    //       methods: {
+              
+    //       }
+    //   });
+
+    function loaddata(data){
+      
+      var taskdata=$.parseJSON(data)
+  //alert(taskdata.TaskName)
+      $('#taskname').val(taskdata.TaskName)
+      $('#FromTime').val(taskdata.FromTime)
+      $('#EndTime').val(taskdata.EndTime)
+      $('#Class').val(taskdata.Class)
+      $('#Address').val(taskdata.Address)
+      $('#TaskContent').val(taskdata.TaskContent)
+    }
+    </script>
+
+
+
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=XSF12HHH4nUf8XBQYl35OD56EhGtQNDd"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script type="text/javascript">
+  var mydatatime,mydatatem,mydatahum=null
+      function getdata() {
+          $.ajax({
+              url: '/chartsdisplay',
+              type: 'post',
+              dataType: 'JSON',
+              success: function (data) {
+                  // mydatatime = data.mydatetime
+                  // mydatatem = data.mydatatem
+                  // mydatahum =data.mydatahum
+              }
+          });
+      }
+      getdata()
+      //setInterval("getdata()", 1000)
+
+      var dom = document.getElementById("container");
+      var myChart = echarts.init(dom);
+      var app = {};
+      option = null;
+      app.title = '折柱混合';
+
+      option = {
+          tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                  type: 'cross',
+                  crossStyle: {
+                      color: '#999'
+                  }
+              }
+          },
+          // toolbox: {
+          //     feature: {
+          //         dataView: {
+          //             show: true,
+          //             readOnly: false
+          //         },
+          //         magicType: {
+          //             show: true,
+          //             type: ['line', 'bar']
+          //         },
+          //         restore: {
+          //             show: true
+          //         },
+          //         saveAsImage: {
+          //             show: true
+          //         }
+          //     }
+          // },
+          legend: {
+              data: ['传感器A(温度)','传感器B(温度)','传感器C(温度)','传感器D(温度)','传感器A(流速)','传感器B(流速)','传感器C(流速)','传感器D(流速)']
+          },
+          xAxis: [{
+              type: 'category',
+              data: mydatatime,
+              axisPointer: {
+                  type: 'shadow'
+              }
+          }],
+          yAxis: [{
+                  type: 'value',
+                  name: '最高分',
+                  min: 0,
+                  max: 130,
+                  interval: 20,
+                  axisLabel: {
+                      formatter: '{value} °C'
+                  }
+              },
+              {
+                  type: 'value',
+                  name: '最低分',
+                  min: 0,
+                  max: 150,
+                  interval: 20,
+                  axisLabel: {
+                      formatter: '{value} m/s'
+                  }
+              }
+          ],
+          series: [{
+                  name: '平均分',
+                  type: 'bar',
+                  data: mydatatem
+              }
+              ,
+              {
+                  name: '及格率',
+                  type: 'line',
+                  yAxisIndex: 1,
+                  data: mydatahum
+              }
+          ]
+      };;
+      setInterval(function () {
+    myChart.setOption({
+      xAxis: [{
+              type: 'category',
+              data: mydatatime,
+              axisPointer: {
+                  type: 'shadow'
+              }
+          }],
+              series: [{
+                  name: '传感器A(温度)',
+                  type: 'bar',
+                  data: mydatatem
+              }
+              ,
+              {
+                  name: '传感器B(温度)',
+                  type: 'bar',
+                  data: mydatatem
+              }
+              ,
+              {
+                  name: '传感器C(温度)',
+                  type: 'bar',
+                  data: mydatatem
+              }
+              ,
+              {
+                  name: '传感器D(温度)',
+                  type: 'bar',
+                  data: mydatatem
+              }
+              ,
+              {
+                  name: '传感器A(流速)',
+                  type: 'line',
+                  yAxisIndex: 1,
+                  data: mydatahum
+              }
+              ,
+              {
+                  name: '传感器B(流速)',
+                  type: 'line',
+                  yAxisIndex: 1,
+                  data: mydatahum
+              }
+              ,
+              {
+                  name: '传感器C(流速)',
+                  type: 'line',
+                  yAxisIndex: 1,
+                  data: mydatahum
+              }
+              ,
+              {
+                  name: '传感器D(流速)',
+                  type: 'line',
+                  yAxisIndex: 1,
+                  data: mydatahum
+              }
+          ]
+    });
+  }, 500);;
+      if (option && typeof option === "object") {
+          myChart.setOption(option, true);
+      }
+  </script>
+
+
+
 {{/block}}
 {{block 'js'}}
 <!-- 加载地图JSAPI脚本 -->
